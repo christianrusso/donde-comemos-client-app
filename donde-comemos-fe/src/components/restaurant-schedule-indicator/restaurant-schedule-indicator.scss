@@ -1,0 +1,38 @@
+restaurant-schedule-indicator {
+
+    .schedule {
+        margin: 2px 0;
+        color: #777;
+        font-weight: bold;
+        font-size: 3.2vw;
+    }
+
+    @media (min-width: 768px) {
+        .schedule {
+            font-size: 2.2vw;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .schedule {
+          font-size: 2vw;
+        }
+    }
+    @media (min-width: 1200px) {
+        .schedule {
+            font-size: 1.4vw;
+        }
+    }
+
+    .closedToday {
+        color: rgb(255, 0, 0)
+    }
+
+    .openedToday {
+        color: rgb(72, 204, 65)
+    }
+
+    .willOpenToday {
+        color: rgb(255, 126, 107)
+    }
+}

@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>rating</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngFor="let res of this.scores">
+    <category-rating [category]="res.category" [addCategory]="addCategory"> </category-rating>
+  </div>
+
+  <div class="center" *ngIf='this.scores?.length > 0'>
+    <button color="primary" ion-button center default (click)="rate()">Calificar</button>
+  </div>
+  <div class="no_results" *ngIf='this.scores?.length == 0' text-center padding>Actualmente no hay categorias para
+    calificar
+  </div>
+
+</ion-content>

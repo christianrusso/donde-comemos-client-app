@@ -1,0 +1,35 @@
+page-start {
+   .start_content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: calc(100% - 100px);  
+        color: color($colors,light);    
+        .note{
+            width: 200px;
+            margin:10px auto;
+            font-size: 1.6rem;
+        }
+   } 
+    .active_btn{
+        background: color($colors,primary);
+        color: color($colors,light);
+    } 
+}
+
+/*logo*/
+.logo{
+    img{
+        width: 200px;
+    }
+    h3{
+        color: color($colors,light);
+        font-size: 2.6rem;
+        margin: 5px 0;
+    }
+    p{
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        color: color($colors,light);
+    }
+}

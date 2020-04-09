@@ -1,0 +1,70 @@
+$font-path: "../assets/fonts";
+$app-direction: ltr;
+@import "ionic.globals";
+@import "./grid";
+
+@mixin background($size:cover,$repeat: no-repeat,$position:center) {
+    background: {
+      size: $size;
+      repeat: $repeat;
+      position:$position;
+    }
+}
+
+@mixin box-shadow($top, $left, $blur , $color,$inset: false) {
+    @if $inset {
+    -webkit-box-shadow:$inset $top $left $blur $color;
+    box-shadow:$inset $top $left $blur $color;
+    } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+    }
+}
+
+@font-face {
+  font-family:Donde-comemos-regular;
+  src: url("../assets/fonts/Fieldwork10GeoRegular.otf");
+}
+
+@font-face {
+  font-family:Donde-comemos-light;
+  src: url("../assets/fonts/Fieldwork7GeoLight.otf");
+}
+
+$colors: (
+  primary:    rgb(255,105,0),
+  secondary:  #32db64,
+  green:  #008628,
+  danger:     #e02818,
+  light:      #fff,
+  dark:       #3d3d3d,
+  blackcolor: #000,
+  GrayColor:  #cdd0d2, 
+  blue:   #3a5a98,
+  facebook:   #3a5a98,
+  twitter:    #65a2d9,
+  red:     #db201d,
+  google:     #ff5450,
+  error-color: rgb(255, 50, 0),
+);
+
+$black: rgba(#000000, .8);
+$black-a: lighten($black, 10%);
+$black-b: lighten($black, 20%);
+$black-c: lighten($black, 40%);
+$black-d: lighten($black, 60%);
+
+$text-input-placeholder-color:color($colors,dark); 	
+$button-md-height:4.2rem;	
+$button-md-border-radius:4px;
+$button-md-text-transform:capitalize;
+$button-md-font-size:1.6rem;		
+$text-input-md-show-focus-highlight:false;
+$alert-md-title-font-size:16px;		
+$alert-md-message-padding-bottom:10px;	
+
+@import "ionic.theme.default";
+
+@import "ionic.ionicons";
+
+@import "noto-sans";

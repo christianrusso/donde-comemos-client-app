@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mis pedidos</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="ionPWA">
+
+    <h1 text-center>Pendientes</h1>
+
+    <div class="no_results" *ngIf="showMessagePendingReservations()" text-center padding>
+      Actualmente no hay pedidos
+    </div>
+
+    <ion-card *ngFor="let order of pendingOrders">
+      <order [order]="order"></order>
+    </ion-card>
+
+    <h1 text-center>Finalizados</h1>
+
+    <div class="no_results" *ngIf="showMessageFinishedReservations()" text-center padding>
+      Actualmente no hay pedidos
+    </div>
+
+    <ion-card *ngFor="let order of finishedOrders">
+      <order [order]="order"></order>
+    </ion-card>
+</div>
+
+</ion-content>

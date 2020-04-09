@@ -1,0 +1,68 @@
+ion-input {
+  input::placeholder {
+    color: #999 !important;
+  }
+}
+
+page-order {
+
+  .text-input-md{
+    margin-left: 0px !important;
+    font-weight: bolder;
+  }
+
+  .label-md {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .card-content-md {
+    margin-left: -2%;
+  }
+
+  .borderItems {
+    border-radius: 2px;
+    font-size: 1.4rem;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  .borderTotal {
+    padding: 4px;
+    width: 100%;
+    justify-content: center;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 1.4rem;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .restaurant-title {
+    text-align: center;
+    font-size: 3rem !important;
+  }
+  .products-title {
+    text-align: center;
+  }
+  .float-right{
+    float: right;
+    padding-right:4px;
+  }
+  .products-title {
+    font-size: 2rem !important;
+  }
+  .error-expected-payment {
+    border: 1px solid red;
+  }
+}
+
+.ion-cont {
+  padding: 8px !important;
+  margin-right: 5px;
+  margin-left: 5% !important;
+}

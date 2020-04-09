@@ -1,0 +1,40 @@
+.alert-title {
+  text-align: center;
+}
+
+.alert-message {
+  text-align: center;
+}
+
+.iconAdd {
+  color: rgb(255, 105, 10);
+}
+
+.addCartModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  contain: strict;
+
+  .popover-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+  }
+  .popover-content {
+    top:unset !important;
+    left:unset !important;
+  }
+}
+
+add-cart {
+  .flex-bottom-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,22 @@
+<ion-content class="main_bg" text-center padding>
+   <div class="start_content">
+      <div class="logo" margin-bottom>
+         <img src="assets/img/icon.png">
+         <h3 no-margin>donde comemos</h3>
+      </div>
+   </div>
+   <div class="ionPWA">
+      <button 
+         (click)="activeButton('sign_in')" 
+         [ngClass]="{'active_btn':activebutton=='sign_in'}" 
+         ion-button block clear>
+         Ingresar
+      </button>
+      <button 
+         (click)="activeButton('sign_up')" 
+         [ngClass]="{'active_btn':activebutton=='sign_up'}" 
+         ion-button block clear>
+         Registrarse
+      </button>
+   </div>
+</ion-content>

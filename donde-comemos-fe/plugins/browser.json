@@ -1,0 +1,42 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.gaia.dondecomemos"
+    }
+  },
+  "dependent_plugins": {}
+}

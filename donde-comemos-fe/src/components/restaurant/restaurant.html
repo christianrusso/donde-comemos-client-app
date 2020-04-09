@@ -1,0 +1,56 @@
+<ion-row class="restaurant-container" (click)="goToDetails()">
+  <ion-col float-left width-30 class="image-container" id="container">
+    <preload-image [ratio]="{w:1, h:1}" src="{{restaurant.profile_picture}}"></preload-image>
+
+    <div class="discount" *ngIf="restaurant.max_discount_today > 0">
+      <span class="discount-number">
+        {{restaurant.max_discount_today}}%
+      </span>
+    </div>
+  </ion-col>
+  <ion-col class="main-container" width-70>
+    <div class="flex">
+      <div class="nameRestaurant"> {{restaurant.name}} </div>
+      <div class="text-left">
+        <ion-icon *ngIf="promedioC > 0" pull-right name="star" class="iconStar">
+          <a class="promedio">{{ promedioC | number:"1.0-1"}}</a>
+        </ion-icon>
+      </div>
+    </div>
+    <restaurant-schedule-indicator [hours]="restaurant.hours"></restaurant-schedule-indicator>
+    
+    <div class="flex">
+
+      <div class="more-info">
+        <h2 class="address">{{restaurant.address}}</h2>
+        
+        <div class="promotionDIV" *ngIf="restaurant.promotions">
+          <h3 class="promotion">{{restaurant.promotions.promotion}}</h3>
+        </div>
+        
+        <ion-chip class="chip" *ngFor="let tag of tagsMacro">
+          <ion-label text-center>{{tag.name}}</ion-label>
+        </ion-chip>
+        
+      </div>
+      <div class="buyingOptions-container">
+        <div class="buyingOptions-row flex">
+          <a class="buyingOptions-txt" *ngIf="restaurant.self_service">Take away</a>
+          <!-- <ion-icon name="custom-self-box" class="service-icon" *ngIf="restaurant.self_service"></ion-icon> -->
+        </div>
+        <div class="buyingOptions-row flex">
+          <a class="buyingOptions-txt" *ngIf="restaurant.delivery">Delivery</a>
+          <!-- <ion-icon name="custom-scooter" class="service-icon" *ngIf="restaurant.delivery"></ion-icon> -->
+        </div>
+      </div>
+    </div>
+  </ion-col>
+
+  <!-- <div float-right>
+    <h1 class="nameRestaurant">{{restaurant.name}}
+      <ion-icon *ngIf="promedioC > 0" pull-right name="star" class="iconStar">
+        <a class="promedio">{{ promedioC | number:"1.0-1"}}</a>
+      </ion-icon>
+    </h1>
+  </div> -->
+</ion-row>

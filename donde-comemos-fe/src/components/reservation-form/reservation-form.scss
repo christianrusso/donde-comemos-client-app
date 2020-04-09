@@ -1,0 +1,29 @@
+reservation-form {
+
+    ion-input{
+        input::placeholder {
+          color:#999!important;
+        }
+      }
+
+    .reservationItems{
+    }
+
+    .iconItems{
+        font-size: 25px;
+    }
+
+    .calendar{
+        margin-top: 16px;
+    }
+
+    .labelCalendar{
+        font-size: 15px;
+        color: #999;
+    }
+
+    .iconCalendar{
+        margin-right: 5px;
+    }
+
+}

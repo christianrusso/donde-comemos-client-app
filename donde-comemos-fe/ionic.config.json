@@ -1,0 +1,7 @@
+{
+  "name": "donde-comemos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

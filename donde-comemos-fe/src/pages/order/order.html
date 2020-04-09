@@ -1,0 +1,134 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Confirmar pedido</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="app_form">
+        <ion-list>
+            <ion-item class="restaurant-title">
+                {{orderProvider.order.restaurant.name}}
+            </ion-item>
+            <ion-item class="products-title">
+                Pedido
+            </ion-item>
+        </ion-list>
+        <div class="ionPWA">
+            <ion-card *ngFor="let orderproduct of orderProvider.getProducts().concat(orderProvider.getMenus())">
+                <ion-card-title class="ion-cont">{{orderproduct.item.name}}</ion-card-title>
+                <ion-card-content class="ion-cont">
+                    x {{orderproduct.amount}}
+                    <span class="float-right" *ngIf="!orderproduct.additional">
+                        $ {{orderproduct.amount * orderproduct.item.discount_price}}
+                    </span>
+                </ion-card-content>
+                <ion-card-content class="ion-cont" *ngIf="orderproduct.additional">
+                    Con: {{orderproduct.additional.name}}
+                    <span class="float-right">
+                        $
+                        {{orderproduct.amount * orderproduct.item.discount_price + (orderproduct.additional.discount_price * orderproduct.amount)}}
+                    </span>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-item class="products-title">
+                Confirmación
+            </ion-item>
+            <ion-card padding-left>
+                <ion-card-content [formGroup]="form">
+                    <ion-list radio-group [(ngModel)]="orderProvider.order.order_type" formControlName="order_type">
+                        <ion-list-header>
+                            ¿Dónde comés?
+                        </ion-list-header>
+                        <ion-item>
+                            <ion-label>En el restaurante</ion-label>
+                            <ion-radio value="COM"></ion-radio>
+                        </ion-item>
+                        <ion-item *ngIf="orderProvider.order.restaurant.delivery">
+                            <ion-label>Delivery</ion-label>
+                            <ion-radio (click)="deliveryMethod()" value="DEL"></ion-radio>
+                        </ion-item>
+                        <ion-item *ngIf="orderProvider.order.restaurant.self_service">
+                            <ion-label>Take-away</ion-label>
+                            <ion-radio (click)="deliveryMethod()" value="LOC"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Método de pago</ion-label>
+                            <ion-select placeholder="Seleccione un método" cancelText="Cancelar" okText="Aceptar"
+                                [(ngModel)]="paymentMethod" formControlName="paymentMethod">
+                                <ion-option value="cash">Efectivo</ion-option>
+                                <ion-option *ngIf="hasCard" value="creditCard">Tarjeta</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                    </ion-list>
+
+                    <reservation-form 
+                        *ngIf="orderProvider.isComerRestaurant()" 
+                        [restaurant]="restaurant" [orderPage]="true" [paymentMethod]="paymentMethod" [orderPage]="true">
+                    </reservation-form>
+
+                    <div class="borderItems">
+
+                        <ion-item class="reservationItems"
+                            *ngIf="orderProvider.isDeliveryOrder() || orderProvider.isLocalOrder()">
+                            <ion-icon name="time" class="iconItems" item-start></ion-icon>
+                            <ion-label>Horario de pedido</ion-label>
+                            <ion-datetime (ionChanged)="onTimeChange($event)" displayFormat="HH:mm" doneText="aceptar"
+                                cancelText="cancelar" min="08:00" formControlName="time"
+                                [(ngModel)]="orderProvider.order.order_hour" [(ngModel)]="time"></ion-datetime>
+                        </ion-item>
+
+                        <ion-item class="reservationItems" *ngIf="orderProvider.isDeliveryOrder()">
+                            <ion-icon name="pin" item-start></ion-icon>
+                            <ion-input type="text" placeholder="Dirección" [(ngModel)]="orderProvider.order.address"
+                                formControlName="address"></ion-input>
+                        </ion-item>
+
+                        <ion-item class="reservationItems"
+                            *ngIf="orderProvider.isDeliveryOrder() || orderProvider.isLocalOrder()">
+                            <ion-icon class="iconItems" name="call" item-start></ion-icon>
+                            <ion-input type="tel" placeholder="Celular" [(ngModel)]="orderProvider.order.phone_nbr"
+                                formControlName="phone_nbr">
+                            </ion-input>
+                        </ion-item>
+
+                        <ion-item class="reservationItems" *ngIf="orderProvider.isDeliveryOrder()">
+                            <ion-icon name="cash" item-start></ion-icon>
+                            <ion-input [ngClass]="{'error-expected-payment': errors.expected_payment}"
+                                (ionChange)="clearError('expected_payment')" type="number" placeholder="Abono con:"
+                                [(ngModel)]="orderProvider.order.expected_payment" formControlName="expected_payment">
+                            </ion-input>
+                        </ion-item>
+
+                        <ion-label color="error-color" *ngIf="errors.expected_payment">{{errors.expected_payment}}
+                        </ion-label>
+
+
+                        <ion-item class="reservationItems"
+                            *ngIf="orderProvider.isDeliveryOrder() || orderProvider.isLocalOrder()">
+                            <ion-icon name="chatbubbles" class="iconItems" item-start></ion-icon>
+                            <ion-input type="text" placeholder="Comentario" text-wrap
+                                [(ngModel)]="orderProvider.order.comments" formControlName="comments"></ion-input>
+                        </ion-item>
+
+                    </div>
+
+                    <ion-label class="products-title borderTotal">Total: ${{getTotal()}}</ion-label>
+                </ion-card-content>
+            </ion-card>
+            <button 
+                ion-button block 
+                (click)="makeOrder()"
+                [disabled]="!isValid()" 
+                *ngIf="orderProvider.isDeliveryOrder() || orderProvider.isLocalOrder()">
+                Confirmar
+            </button>
+        </div>
+    </div>
+</ion-content>

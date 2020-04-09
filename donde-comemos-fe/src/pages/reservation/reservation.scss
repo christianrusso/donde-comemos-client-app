@@ -1,0 +1,45 @@
+
+.datepicker-wrapper {
+    opacity: 0.97;
+    text-align: center;
+    .datepicker-header{
+        height: unset !important;
+    }
+}
+
+ion-backdrop{
+    opacity: 0.5;
+}
+
+
+page-reservation {
+
+  .text-input-md{
+    margin-left: 0px !important;
+    font-weight: bolder;
+  }
+
+  .label-md {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+    ion-input {
+        input::placeholder {
+          color: #999 !important;
+        }
+      }
+      
+    .ion-cont {
+        padding: 8px !important;
+        margin-right: 5px;
+        margin-left: 5% !important;
+    }
+      
+  .float-right{
+    float: right;
+    padding-right:4px;
+  }
+
+}
+

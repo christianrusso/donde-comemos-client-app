@@ -1,0 +1,88 @@
+<ion-header class="transparent_header">
+
+  <ion-navbar>
+
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Perfil</ion-title>
+
+    <ion-buttons end>
+      <button color="light" ion-button icon-only clear (click)="changeMode()">
+        <ion-icon name="md-create" *ngIf="isDisabled"></ion-icon>
+        <ion-icon name="checkmark" *ngIf="!isDisabled" class="save_icon"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="main_bg" padding>
+  
+  <!-- <div class="profile_img" text-center> 
+    <img src="{{img}}">
+    <span class="upload_img" (click)="getPhoto()"><ion-icon color="light" name="ios-camera-outline"></ion-icon></span>
+  </div> -->
+
+  <form [formGroup]="form">
+    <ion-list no-margin>
+      <ion-item no-lines>
+        <ion-icon name="md-person" color="light" item-start></ion-icon>
+        <ion-input 
+        type="text" 
+        placeholder="Nombre" 
+        formControlName="first_name" 
+        [(ngModel)]="user.first_name"
+        disabled="{{isDisabled}}">
+        </ion-input>
+      </ion-item>
+      
+      <ion-item no-lines>
+        <ion-icon name="md-person" color="light" item-start></ion-icon>
+        <ion-input 
+        type="text" 
+        placeholder="Apellido" 
+        formControlName="last_name" 
+        [(ngModel)]="user.last_name"
+        disabled="{{isDisabled}}">
+      </ion-input>
+    </ion-item>
+    
+    <ion-item no-lines>
+      <ion-icon name="md-mail" color="light" item-start></ion-icon>
+      <ion-input 
+      type="email" 
+      placeholder="Email" 
+      formControlName="email" 
+      [(ngModel)]="user.email" 
+      disabled="true">
+      </ion-input>
+    </ion-item>
+    
+    <ion-item no-lines>
+      <ion-icon name="md-lock" color="light" item-start></ion-icon>
+      <button class="for_psw" (click)="showChangePasswordAlert()" ion-button small clear>
+        Cambiar contraseña...
+      </button>
+    </ion-item>
+    
+    <ion-item no-lines>
+      <ion-icon name="md-call" color="light" item-start></ion-icon>
+      <ion-input
+      type="tel" 
+      placeholder="Teléfono" 
+      formControlName="phone_nbr" 
+      [(ngModel)]="user.phone_nbr"
+      disabled="{{isDisabled}}">
+      </ion-input>
+    </ion-item> 
+
+    </ion-list>
+  </form>
+
+  <button ion-button block (click)="saveChanges()" *ngIf="!isDisabled" [disabled]="!isValid()">Guardar</button>
+
+</ion-content>

@@ -1,0 +1,69 @@
+<div [formGroup]="form">
+
+  <ion-item *ngIf="!orderPage && !onlyReservation && reservationProvider.getProducts().concat(reservationProvider.getMenus()).length > 0">
+      <ion-label>Método de pago</ion-label>
+      <ion-select placeholder="Seleccione un método" cancelText="Cancelar" okText="Aceptar"
+          [(ngModel)]="paymentMethod" formControlName="paymentMethod">
+          <ion-option value="cash">Efectivo</ion-option>
+          <ion-option *ngIf="hasCard" value="creditCard">Tarjeta</ion-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-item class="reservationItems">
+    <ion-icon class="iconItems" color="dark" name="people" item-start></ion-icon>
+    <ion-input color="primary" class="ionColor" type="number" placeholder="Comensales" formControlName="diners"
+      [(ngModel)]="diners">
+    </ion-input>
+  </ion-item>
+
+  <ion-label>
+    <span float-left>
+      <ion-item class="reservationItems">
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label class="labelCalendar reservationItems">Fecha</ion-label>
+      </ion-item>
+    </span>
+
+    <span float-right class="calendar">
+      <ion-icon class="iconCalendar" name="clipboard" item-right></ion-icon>
+      <span float-right ion-datepicker (ionChanged)="onDateChange($event)" [localeStrings]="localeStringsES"
+        okText="Aceptar" cancelText="Cancelar" [value]="currentDate" class="ScheduleDate" [min]="today" [max]="maxDate"
+        [modalOptions]="modalOptions" clear>
+        <span>{{ currentDate | date: 'dd/MM/yyyy' }}</span>
+      </span>
+    </span>
+  </ion-label>
+
+  <ion-item class="reservationItems">
+    <ion-icon name="time" class="iconItems" item-start></ion-icon>
+    <ion-label class="reservationItems">Hora</ion-label>
+    <ion-datetime displayFormat="HH:mm" doneText="aceptar" cancelText="cancelar" minuteValues="0,15,30,45" min="06:00"
+      formControlName="time" [(ngModel)]="time"></ion-datetime>
+  </ion-item>
+
+  <ion-item class="reservationItems">
+    <ion-icon class="iconItems" name="call" item-start></ion-icon>
+    <ion-input type="tel" placeholder="Celular" formControlName="phone_nbr" [(ngModel)]="phone_nbr">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="reservationItems">
+    <ion-icon name="chatbubbles" class="iconItems" item-start></ion-icon>
+    <ion-input class="reservationItems" type="text" placeholder="Comentario" text-wrap formControlName="comments"
+      [(ngModel)]="comments">
+    </ion-input>
+  </ion-item>
+  
+</div>
+<ion-item>
+  <ion-icon class="iconItems" name="clipboard" item-start></ion-icon>
+  <ion-label class="reservationItems">Motivo</ion-label>
+  <ion-select [(ngModel)]="motive" cancelText="Cancelar" okText="Aceptar">
+    <div *ngFor='let m of reservationMotives'>
+      <ion-option value={{m.name}}>{{m.name}}</ion-option>
+    </div>
+  </ion-select>
+</ion-item>
+
+
+<button ion-button block [disabled]="!isValid()" (click)="makeReservation()">Confirmar </button>

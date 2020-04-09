@@ -1,0 +1,17 @@
+.alignme {
+  text-align: right !important;
+}
+
+page-information {
+  .toolbar-title{
+    text-transform: none !important;
+  }
+  
+  .chip {
+    color: rgb(255, 105, 0) !important;
+    font-weight: bold;
+    background-color: white !important;
+    border: 1px solid rgb(255, 105, 0) !important;
+    margin-right: 10px;
+  }
+}

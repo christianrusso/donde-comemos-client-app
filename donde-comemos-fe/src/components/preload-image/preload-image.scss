@@ -1,0 +1,55 @@
+preload-image {
+
+	ion-spinner {
+		position: absolute;
+		width: 28px;
+		height: 28px;
+		line-height: inherit;
+		top: calc(50% - 28px/2);
+		left: calc(50% - 28px/2);
+		* {
+			fill: #AAA !important;
+
+		}
+	}
+	width: 100%;
+	display: block;
+	overflow: hidden;
+	&.rounded-image {
+		border-radius: 50%;
+	}
+	&.ignore-padding {
+		padding: 0px !important;
+		img {
+			position: unset !important;
+		}
+	}
+	&.img-loaded {
+		background-color: transparent;
+		border: none;
+		img {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		ion-spinner {
+			visibility: hidden;
+			display: none;
+		}
+	}
+
+	img	{
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		visibility: hidden;
+		opacity: 0;
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover;
+		max-width: inherit !important;
+		max-height: inherit !important;
+		min-width: inherit !important;
+		min-height: inherit !important;
+	}
+}

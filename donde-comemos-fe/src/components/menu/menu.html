@@ -1,0 +1,35 @@
+<ion-card class="card-style flex-column">
+    <ion-card-header class="title-menu">{{menu.name}}</ion-card-header>
+    <ion-card-content class="flex-column menu-content">
+
+        <div>
+            <ion-item class="description" text-wrap>{{menu.description}}</ion-item>
+
+            <div class="sub">
+                <div class="sub-menu-container" *ngFor="let sm of subMenus">
+                    <ion-item text-wrap>
+                        <ion-label class="sub-menu">{{sm.name}}</ion-label>
+                        <ion-label class="sub-menu-description">{{sm.value}} </ion-label>
+                    </ion-item>
+                </div>
+            </div>
+        </div>
+
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12 end>
+                    <div *ngIf="menu.discount_price != menu.real_price">
+                        <button ion-button small float-left
+                            class="discountMenu">{{ ((  1 - (menu.discount_price / menu.real_price)  ) * 100) | number:'1.0-2'}}
+                            %</button>
+                    </div>
+                    <ion-label class="sub-menu" text-right>$ {{menu.discount_price}} </ion-label>
+                    <add-cart [item]="menu" [item_type]="item_type"></add-cart>
+                </ion-col>
+                <ion-col col-2>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-card>

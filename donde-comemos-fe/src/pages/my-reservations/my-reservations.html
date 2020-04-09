@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mis reservas</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="ionPWA">
+
+    <h1 text-center>Pendientes</h1>
+
+    <div class="no_results" *ngIf="showMessagePendingReservations()" text-center padding>
+      Actualmente no hay reservas
+    </div>
+
+    <ion-card *ngFor="let reservation of pendingReservations">
+      <reservation [reservation]="reservation"> </reservation>
+    </ion-card>
+
+    <h1 text-center>Finalizadas</h1>
+
+    <div class="no_results" *ngIf="showMessageFinishedReservations()" text-center padding>
+      Actualmente no hay reservas
+    </div>
+
+    <ion-card *ngFor="let reservation of finishedReservations">
+      <reservation [reservation]="reservation" [onQualified]="loadReservations"> </reservation>
+    </ion-card>
+
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+page-home {
+    ion-content{   
+    }
+
+    [menuToggle]{
+        display: block !important;
+    }
+    @media(min-width:768px){
+        .responsive-home{
+        }
+    }
+}
+
+/*main item*/
+.main_item{
+    height:170px;
+    position: relative;
+    border-radius: 4px;
+    &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 170px;
+        background: rgba(color($colors,blackcolor),.4);
+    }
+    img{
+        width: 100%;
+        height:170px;
+        object-fit: cover;
+    }
+    .item-md{
+        position: absolute;
+        bottom: 0;
+        background: none;
+        p{
+            color: color($colors,light);
+            font-size: 1.7rem;
+        }
+        .item_info{
+            span{
+                &.active_like{
+                    ion-icon{
+                        color: color($colors,danger);
+                    } 
+                }
+                color: color($colors,light);
+                font-size: 1.3rem;
+                ion-icon{
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+/* fab btn */
+ion-fab[right]{
+    right: 20px;
+}

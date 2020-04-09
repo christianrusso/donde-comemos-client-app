@@ -1,0 +1,10 @@
+
+<div>
+  <p class="centerR textP">{{category.name}}</p>
+  <div class="centerR">
+    <ionic3-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="rgb(255,105,0)"
+      defaultColor="rgb(255,105,0)" readonly="false" fontSize="50px" (ratingChanged)="logRatingChange($event)" rating = "0" halfStar = "true">
+    </ionic3-star-rating>
+  </div>
+</div>
+

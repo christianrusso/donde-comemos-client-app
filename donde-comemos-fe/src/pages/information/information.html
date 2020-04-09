@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="titleGaia">Información de {{restaurant.name}}</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="ionPWA">
+
+    <h3>
+      <ion-icon name="md-book"></ion-icon>
+      Calificaciones
+    </h3>
+    <div class="no_results" *ngIf="qualifications?.length == 0" text-center padding>Actualmente no hay calificaciones
+    </div>
+
+    <ion-item *ngFor="let q of qualifications">
+      <ion-label>{{q.name}}</ion-label>
+      <ion-label>
+        <ionic3-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="rgb(255, 105, 0)"
+          defaultColor="red" readonly="true" fontSize="12px" halfStar="true" rating="{{q.average}}">
+        </ionic3-star-rating>
+      </ion-label>
+      <ion-label class="alignme">{{ q.average | number:"1.0-1"}}</ion-label>
+
+
+    </ion-item>
+
+    <h3>
+      <ion-icon name="md-book"></ion-icon>
+      Descripción
+    </h3>
+    <ion-item>
+      {{restaurant.description}}
+    </ion-item>
+
+    <h3>
+      <ion-icon name="ios-locate-outline"></ion-icon>
+      Ubicación
+    </h3>
+    <ion-item>
+      {{restaurant.address}}
+    </ion-item>
+
+    <h3 *ngIf="services.length>0">
+      <ion-icon name="restaurant"></ion-icon>
+      Servicios
+    </h3>
+
+    <ion-item *ngFor="let service of services">
+      {{service.name}}
+    </ion-item>
+
+    <h3 *ngIf="tagsLowAndHigh.length>0">
+      <ion-icon name="pricetags"></ion-icon>
+      Tags
+    </h3>
+
+    <ion-chip class="chip" *ngFor="let tag of tagsLowAndHigh">
+      <ion-label text-center>{{tag.name}}</ion-label>
+    </ion-chip>
+
+    <h3 *ngIf="paymentMethods.length>0">
+      <ion-icon name="card"></ion-icon>
+      Métodos de pago
+    </h3>
+
+    <ion-item *ngFor="let paymentMethod of paymentMethods">
+      {{paymentMethod.name}}
+    </ion-item>
+
+    <h3 *ngIf="hours.length>0">
+      <ion-icon name="ios-time"></ion-icon>
+      Horarios
+    </h3>
+
+    <ion-item text-wrap *ngFor="let hour of hours">
+      <ion-label class="sub-menu">{{hour.day}}</ion-label>
+      <ion-label>{{hour.opening_hour | time}}
+        <ion-icon class="hour" name="time"> </ion-icon>
+        {{hour.closing_hour | time}}
+      </ion-label>
+    </ion-item>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-menu [content]="content">
+  <ion-header class="transparent_header">
+      <ion-buttons>
+        <button color="light" menuClose ion-button icon-only clear float-left> 
+           <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <!-- <button color="light" (click)="handleLogout()" ion-button icon-only clear float-right> 
+          <ion-icon name="power"></ion-icon>
+        </button> -->
+      </ion-buttons>
+      
+  </ion-header>
+
+  <ion-content class="main_bg" padding>
+    <div class="profile_name" text-center>
+      <p no-margin>{{userProvider.user.first_name}} {{userProvider.user.last_name}}</p>
+    </div>
+
+    <ion-list class="menu_items">
+      <ion-item 
+        ion-item 
+        no-lines
+        menuClose 
+        no-padding 
+        text-center 
+        *ngFor="let p of menuNavigation.pages; let i = index" 
+        (click)="this.menuNavigation.handleSelection(i, p)">
+        <span 
+          class="cir_icon" 
+          [ngClass]="{ 'active_category': menuNavigation.selectedIndex == i }">
+          <ion-icon name="{{p.icon}}"></ion-icon>
+        </span>
+        {{p.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

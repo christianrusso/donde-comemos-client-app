@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{restaurant.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToServices()">
+        <ion-icon name="ios-information-circle-outline" class="float-right button-info"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="main_item">
+    <img src="{{selectedImg}}" />
+    <preload-image [ratio]="{w:2, h:1}" src="{{selectedImg}}"></preload-image>
+    <ion-item>
+      <h1 class="nameRestaurant"></h1>
+      <div class="item_info">
+        <div float-right>
+          <button ion-button class="button-reservation" (click)="goToReservation()">Reservar mesa</button>
+          <div float-right>
+            <favorite-restaurants [restaurant]="restaurant" [restaurantFavorite]="restaurantFavorite">
+            </favorite-restaurants>
+            <ion-icon name="cart" color="primary" (click)="showOrder()"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </div>
+
+  <ion-scroll scrollX="true" class="more_img">
+    <div class="item_img" *ngFor="let item of pictures" [ngClass]="{'active_select':selectedImg==item}"
+      (click)="getImg(item)">
+      <preload-image class="preload" [ratio]="{w:1, h:1}" src="{{item}}"></preload-image>
+    </div>
+  </ion-scroll>
+
+  <div class="ionPWA">
+
+    <div class="no_results_menus" *ngIf="getMenusOfDay()?.length == 0" text-center padding>
+      Restaurante sin menú del día
+    </div>
+
+    <div *ngIf="getMenusOfDay().length > 0">
+      <div>
+        <h1 text-center class="menuOfDay">Menús del día</h1>
+      </div>
+
+      <ion-scroll class="horizontal-scroll" scrollX="true">
+        <ion-row nowrap>
+          <ion-col width-90 class="item_img" *ngFor="let menu of getMenusOfDay()">
+            <menu [menu]="menu"></menu>
+          </ion-col>
+        </ion-row>
+      </ion-scroll>
+    </div>
+
+    <!-- <div class="recipe_detail" padding>
+        <h3>Ingredients</h3>
+        <ion-list>
+          <ion-item no-lines>
+            <ion-icon class="app-circle" color="primary" item-start></ion-icon>
+            1 head garlic
+          </ion-item>
+        </ion-list>
+       
+      </div> -->
+    <h1 text-center>Carta</h1>
+    <div class="no_results_products" *ngIf="getElements()?.length == 0" text-center padding>Restaurante sin productos
+    </div>
+
+    <div *ngIf="getElements()?.length > 0">
+
+      <div class="category-container" *ngFor="let category of getElements()">
+        <h2 float-left class="nameCategory"> {{category.name}}</h2>
+        
+        <ion-item class="product-container" *ngFor="let product of category.products">
+            <product [product]="product" [additionals]="category.additionals"></product>
+        </ion-item>
+      </div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+  </div>
+      <ion-fab bottom left>
+        <button (click)="showOrder()" ion-fab>
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-fab>
+
+</ion-content>

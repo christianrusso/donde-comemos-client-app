@@ -1,0 +1,59 @@
+
+menu {
+  .discountProduct {
+    height: 1.1em !important;
+    margin-right: 9%;
+    margin-top: 3%;
+    background-color: #ff6900;
+  }
+  height: 100%;
+  margin: 0;
+  .item {
+    min-height: 3rem !important;
+  }
+
+  .label {
+    margin: 0px !important;
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-content {
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .card-style {
+    height: 100%;
+    margin-left: -27px;
+    width: unset;
+    margin: 0 0 0 -27px;
+  }
+
+  .title-menu {
+    font-weight: bold;
+  }
+
+  .sub > div:first-child {
+    border: unset;
+  }
+
+  .sub-menu-container {
+    padding-bottom: 4px;
+    border-top: 1px solid #ccc;
+  }
+
+  .description {
+    color: $black-b;
+  }
+
+  .sub-menu {
+    font-weight: bold;
+  }
+  .sub-menu-description {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+}

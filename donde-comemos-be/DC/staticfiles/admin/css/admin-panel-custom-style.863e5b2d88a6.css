@@ -1,0 +1,59 @@
+.input-field>.btn {
+    width: auto;
+}
+
+fieldset.collapsed .collapse-toggle{
+	color: var(--main-hover-color);
+}
+
+fieldset .collapse-toggle{
+	color: #666;
+}
+
+.aligned label{
+    width: auto;
+}
+
+.form-row td{
+    padding-bottom: 0px;
+}
+
+td.field-day{
+    padding-bottom: 16px;
+}
+
+.dropdown-content { 
+    min-width: 245px;
+}
+
+[type=checkbox]+span:not(.lever) {
+    padding-left: 22px;
+}
+
+.select-dropdown {
+    /* top: -141.615px !important;
+    height: 204.611px !important; */
+}
+
+.module ul {
+    padding-right: 0px;
+}
+
+[type=checkbox]:checked, [type=checkbox]:not(:checked){
+    position: none !important;
+    opacity: none !important;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card .card-image img {
+    border-radius: 0;
+}
+
+.collapsible {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+}

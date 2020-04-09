@@ -1,0 +1,31 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="flex-center" col-7>
+        <p class="nameProduct" float-left>{{product.name}}</p>
+      </ion-col>
+      <ion-col col-5>
+        <ion-row>
+          <ion-col no-padding width-50 *ngIf="product.discount_price != product.real_price">
+            <button float-right ion-button small class="discountProduct">
+              {{ ((  1 - (product.discount_price / product.real_price)  ) * 100) | number:'1.0-2'}} %
+            </button>
+          </ion-col>
+          <ion-col class="flex-center flex-end" width-50>
+            <span class="price-text">
+              ${{product.discount_price | number:'1.0-2'}}
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-8>
+        <h4 class="descriptionProduct">{{product.description}}</h4>
+      </ion-col>
+      <ion-col col-4>
+        <add-cart class="h-100" [item]="product" [item_type]="item_type" [additionals]="additionals"></add-cart>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

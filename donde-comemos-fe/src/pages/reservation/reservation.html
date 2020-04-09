@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reservar mesa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!reservationProvider.onlyReservation">
+    <ion-card  *ngFor="let res of reservationProvider.getProducts().concat(reservationProvider.getMenus())">
+      <ion-card-title class="ion-cont">{{res.item.name}}</ion-card-title>
+      <ion-card-content class="ion-cont">
+          x {{res.amount}}
+          <span class="float-right" *ngIf="!res.additional">
+              $ {{res.amount * res.item.discount_price}}
+          </span>
+      </ion-card-content>
+      <ion-card-content class="ion-cont" *ngIf="res.additional">
+          Con: {{res.additional.name}}
+          <span class="float-right">
+              $ {{res.amount * res.item.discount_price + (res.additional.discount_price * res.amount)}}
+          </span>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <reservation-form [restaurant]="restaurant" [paymentMethod]="'cash'" [onlyReservation]="reservationProvider.onlyReservation" [orderPage]="false"></reservation-form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

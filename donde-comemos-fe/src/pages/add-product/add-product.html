@@ -1,0 +1,27 @@
+<ion-content class="background scroll">
+
+    <div class="flex flex-column modal-container">
+        <h6>Cantidad de {{item.name}} a pedir ?</h6>
+        <ion-item>
+            <ion-label>Cantidad:</ion-label>
+            <ion-input type="number" [(ngModel)]="amount" value="1" class="amount-input" placeholder="Cantidad"></ion-input>
+        </ion-item>
+     
+        <ion-item *ngIf="additionals.length > 0">
+            <ion-label>Adicional</ion-label>
+            <ion-select [(ngModel)]="additional" cancelText="Cancelar" okText="Aceptar">
+                <div *ngFor="let additional of additionals">
+                    <ion-option value="{{additional.id}}">{{additional.name}} ${{additional.discount_price}} </ion-option>
+                </div>
+            </ion-select>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <button ion-button (click)="cancel()" color="dark" clear full>Cancelar</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button (click)="accept()" full>Aceptar</button>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

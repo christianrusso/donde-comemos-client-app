@@ -1,0 +1,61 @@
+<ion-header class="transparent_header">
+    <ion-navbar>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login_register main_bg" padding>
+    <div class="logo" text-center margin-bottom>
+        <img src="assets/img/icon.png">
+        <h3 no-margin>donde comemos</h3>
+        <p no-margin></p>
+    </div>
+
+    <div class="app_form">
+        <div class="ionPWA">
+            <ion-list>
+
+                <ion-item no-lines>
+                    <ion-icon color="dark" name="ios-mail-outline" item-start></ion-icon>
+                    <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                    <ion-icon color="dark" name="ios-lock-outline" item-start></ion-icon>
+                    <ion-input type="{{type}}" [(ngModel)]="password" placeholder="Contraseña"></ion-input>
+                    <button (click)="showPassword()" color="GrayColor" ion-button icon-only clear item-end>
+                        <ion-icon *ngIf="type==='text'" name="eye"></ion-icon>
+                        <ion-icon *ngIf="type==='password'" name="eye-off"></ion-icon>
+                    </button>
+                </ion-item>
+                <ion-label class="login-error" *ngFor="let error of errors">{{error}}</ion-label>
+            </ion-list>
+
+            <button 
+                (click)="doLogin()" 
+                style="color: white;"
+                ion-button block>
+                Iniciar sesión
+            </button>
+
+            <ion-row>
+                <ion-col width-50>
+                    <button 
+                        class="for_psw no-wrap" 
+                        (click)="forgotPasswordAlert()" 
+                        ion-button block clear>
+                        ¿Olvidaste la contraseña?
+                    </button>
+                </ion-col>
+                <ion-col width-50>
+                    <button 
+                        class="no-wrap"
+                        (click)="loginAsGuestUser()" 
+                        ion-button block clear>
+                        Ingresar como invitado
+                    </button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+    
+</ion-content>

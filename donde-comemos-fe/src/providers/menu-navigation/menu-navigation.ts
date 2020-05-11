@@ -122,6 +122,7 @@ export class MenuNavigationProvider {
               })
               .catch(errors => {
                 this.loaderProvider.hide()
+                this.app.getActiveNav().setRoot(StartPage)
               })
           }
         }

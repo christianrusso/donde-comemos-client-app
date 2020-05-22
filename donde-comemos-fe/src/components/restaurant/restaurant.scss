@@ -1,4 +1,9 @@
 restaurant {
+  .discountPlace {
+    padding: 3px;
+    margin-top: -3px;
+  }
+
   .promotionDIV {
     padding: 10px;
     margin-top: -10px;
@@ -111,6 +116,17 @@ restaurant {
         font-size: 3vw;
       }
 
+      .tagsDiscountPlace {
+        background-color: rgb(255, 255, 255);
+        margin: 2px;
+        padding: 2px;
+        color:rgb(212, 78, 0);
+        font-weight: bold;
+        font-size: 11px;
+        border: 1px solid rgb(170, 63, 1);
+        border-radius: 5px;
+      }
+
       .promotion {
         margin: 4px 0px 0;
         border-radius: 8px;
@@ -126,6 +142,9 @@ restaurant {
         .tags {
           font-size: 2.2vw;
         }
+        .tagsDiscountPlace {
+          font-size: 12px;
+        }
         .promotion {
           margin: 12px 30px 0;
           font-size: 2.2vw;
@@ -137,6 +156,9 @@ restaurant {
         .tags {
           font-size: 1.5vw;
         }
+        .tagsDiscountPlace {
+          font-size: 13px;
+        }
         .promotion {
           margin: 12px 30px 0;
           font-size: 1.5vw;
@@ -146,6 +168,9 @@ restaurant {
         .address,
         .tags {
           font-size: 1.4vw;
+        }
+        .tagsDiscountPlace {
+          font-size: 14px;
         }
         .promotion {
           margin: 12px 30px 0;

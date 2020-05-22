@@ -35,7 +35,11 @@ export class OrderPage {
   today = new Date();
   date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getDate();
   detailsPage: any;
-
+  total_final: number;
+  discountRes: any;
+  discountDel: any;
+  discountTw: any;
+  
   hasCard: Boolean = false;
 
   constructor(
@@ -58,6 +62,11 @@ export class OrderPage {
     this.deliveryMethod()
     this.hasACard()
 
+    this.total_final = this.orderProvider.getTotal();
+
+    this.discountRes = this.getDiscount('RES');
+    this.discountDel = this.getDiscount('DEL');
+    this.discountTw = this.getDiscount('LOC');
   }
 
   hasACard() {
@@ -74,11 +83,21 @@ export class OrderPage {
   }
 
   getTotal() {
-    return this.orderProvider.getTotal()
+    return this.total_final;
   }
 
   isValid() {
     return this.form.valid
+  }
+  
+  getDiscount(type: string) {
+    const place = this.restaurant.placediscounts.find((item) => item.place === type);
+    console.log(place);
+    if (typeof place !== 'undefined') {
+      return place.amount;
+    } else {
+      return "";
+    }
   }
 
   validate() {
@@ -98,12 +117,13 @@ export class OrderPage {
     this.reservationProvider.isAvailable(this.restaurant.id, this.date, this.orderProvider.order.order_hour, 0)
       .then(isAvailable => {
         this.loader.hide()
-        
+
         this.isAvailable = isAvailable;
         if (this.isAvailable.is_available) {
           if (this.userProvider.user.token) {
             if (this.validate()) {
               if (this.paymentMethod == 'creditCard') {
+                console.log("MEPA", this.total_final);
                 this.navCtrl.push(MercadoPagoModalPage, { restaurantId: this.restaurant.id, publicKey: this.restaurant.public_key });
               } else {
                 this.make2Order()
@@ -166,15 +186,21 @@ export class OrderPage {
   }
 
   deliveryMethod() {
+    let total_init = this.orderProvider.getTotal() ;
     if (this.orderProvider.isDeliveryOrder()) {
       this.form.controls["address"].setValidators([Validators.required, Validators.minLength(3)])
-      this.form.controls["expected_payment"].setValidators(Validators.required)
+      this.form.controls["expected_payment"].setValidators(Validators.required);
+      this.total_final = total_init - (total_init * (this.discountDel * 0.01));
     }
     else if (this.orderProvider.isLocalOrder()) {
       this.form.controls["address"].clearValidators()
       this.form.controls["expected_payment"].clearValidators()
       this.form.controls["address"].updateValueAndValidity()
       this.form.controls["expected_payment"].updateValueAndValidity()
+      this.total_final = total_init - (total_init * (this.discountTw * 0.01));
+    }
+    else if (this.orderProvider.isComerRestaurant()) {
+      this.total_final = total_init - (total_init * (this.discountRes * 0.01));
     }
   }
 

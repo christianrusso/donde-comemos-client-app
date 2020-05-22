@@ -23,7 +23,8 @@ export class OrdersPage {
     this.loader.display('Cargando sus pedidos...');
     this.orderProvider.get().then((orders: any) => {
       this.pendingOrders = orders.filter((ord) =>
-        !ord.delivered && !ord.cancelled)
+        !ord.delivered && !ord.cancelled);
+      console.log(this.pendingOrders);
       this.finishedOrders = orders.filter((ord) =>
         ord.delivered)
       this.loader.hide()

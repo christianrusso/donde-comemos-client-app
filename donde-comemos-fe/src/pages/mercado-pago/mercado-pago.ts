@@ -42,11 +42,11 @@ export class MercadoPagoComponent {
   }
 
   submitForm(){
-    
+
     this.mercadoPagoProvider.setEmail(this.userProvider.user.email);
     this.mercadoPagoProvider.setDocNumber(this.docNumber);
     this.mercadoPagoProvider.setData(this.data);
-    
+
     let form = document.getElementById("payForm");
     this.loader.display('Estamos creando su pedido...')
     this.mercadoPagoProvider.doPay(form).then((mpId)=>{

@@ -1,12 +1,10 @@
 import { ReservationProvider } from './../../providers/reservation/reservation';
 import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { OrderProvider } from "../../providers/order/order";
 import { Events } from 'ionic-angular';
 import { LoaderProvider } from '../../providers/loader/loader';
 import { ToastProvider } from '../../providers/toast/toast';
-import { LoginPage } from '../login/login';
-import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-mercado-pago-modal',
@@ -24,8 +22,7 @@ export class MercadoPagoModalPage {
     private reservationProvider: ReservationProvider,
     private events: Events,
     private loader: LoaderProvider,
-    private toaster: ToastProvider,
-    private viewCtrl: ViewController) {
+    private toaster: ToastProvider) {
 
     let restaurantId = this.navParams.get('restaurantId');
     let phone_nbr = this.navParams.get('phone_nbr');
@@ -34,8 +31,6 @@ export class MercadoPagoModalPage {
     let time = this.navParams.get('time');
     let motive = this.navParams.get('motive');
     let comments = this.navParams.get('comments');
-
-    console.log(phone_nbr)
 
     this.events.subscribe('payment:created', (response) => {
       if (response && response.attributes.status === 'approved') {
@@ -79,7 +74,8 @@ export class MercadoPagoModalPage {
     this.publicKey = this.navParams.get('publicKey');
     this.data = {
       restaurantId: restaurantId,
-      total: this.orderProvider.getTotal(),
+      //total: this.orderProvider.getTotal(),
+      total: this.navParams.get('total'),
     }
   }
 }

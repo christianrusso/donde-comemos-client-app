@@ -54,6 +54,7 @@ export class LoginPage {
   doLogin() {
 
     this.loader.display('Iniciando sesión');
+    console.log(this.email, this.password);
     this.userProvider.login(this.email, this.password)
       .then(() => {
         if (this.restaurant) {

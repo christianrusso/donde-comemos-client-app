@@ -17,7 +17,7 @@
 
   <ion-item text-wrap>
     <ion-label class="total">Total</ion-label>
-    <ion-label class="total">$ {{order.discount_price}}</ion-label>
+    <ion-label class="total">$ {{order.price_final}}</ion-label>
   </ion-item>
 
   <button ion-button small *ngIf="!showProducts" (click)="toggleProducts()">Ver productos</button>

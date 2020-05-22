@@ -1,7 +1,9 @@
 
   <div class="center_screen">
     <form action="" #payForm method="post" id="payForm" (ngSubmit)="submitForm()" name="pay">
-
+      <ion-item>
+        <ion-label>Total: $2536</ion-label>
+      </ion-item>
       <ion-item>
         <ion-label>Número de tarjeta</ion-label>
         <ion-input type="tel" #cardNumber maxlength="16"

@@ -41,6 +41,8 @@ import { BrandPictureProvider } from '../providers/brand-picture/brand-picture';
 import { TagMacroProvider } from '../providers/tag-macro/tag-macro';
 import { TagMicroProvider } from '../providers/tag-micro/tag-micro';
 import { TimePipe } from '../PIPES/time/time';
+import { PlacePipe } from '../PIPES/place/placeDiscount';
+import { DiscountFormatPipe } from '../PIPES/place/discountFormat';
 import { ToastProvider } from '../providers/toast/toast';
 import { PaymentMethodProvider } from '../providers/payment-method/payment-method';
 import { HourProvider } from '../providers/hour/hour';
@@ -108,6 +110,8 @@ var config = {
     MenuComponent,
     AddCartComponent,
     TimePipe,
+    PlacePipe,
+    DiscountFormatPipe,
     OrderComponent,
     FavoriteRestaurantsComponent,
     OrdersPage,

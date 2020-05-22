@@ -18,20 +18,25 @@
       </div>
     </div>
     <restaurant-schedule-indicator [hours]="restaurant.hours"></restaurant-schedule-indicator>
-    
+
     <div class="flex">
 
       <div class="more-info">
         <h2 class="address">{{restaurant.address}}</h2>
-        
-        <div class="promotionDIV" *ngIf="restaurant.promotions">
+
+        <!--div class="promotionDIV" *ngIf="restaurant.promotions">
           <h3 class="promotion">{{restaurant.promotions.promotion}}</h3>
+        </div-->
+        <div class="discountPlace" *ngIf="restaurant.placediscounts">
+          <span class="tagsDiscountPlace" *ngFor="let discount of restaurant.placediscounts">
+            {{discount.place| place}} -{{discount.amount}}%
+          </span>
         </div>
-        
+
         <ion-chip class="chip" *ngFor="let tag of tagsMacro">
           <ion-label text-center>{{tag.name}}</ion-label>
         </ion-chip>
-        
+
       </div>
       <div class="buyingOptions-container">
         <div class="buyingOptions-row flex">

@@ -12,7 +12,8 @@ export interface order {
     comments: string,
     order_type: string,
     products: orderitem[]
-    menus: orderitem[]
+    menus: orderitem[],
+    price_final: number
 }
 
 interface orderitem {

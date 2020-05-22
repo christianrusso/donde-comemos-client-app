@@ -45,15 +45,15 @@
                             ¿Dónde comés?
                         </ion-list-header>
                         <ion-item>
-                            <ion-label>En el restaurante</ion-label>
-                            <ion-radio value="COM"></ion-radio>
+                            <ion-label>En el restaurante <span style="color:rgb(105, 102, 102)">{{ discountRes | discountFormat }}</span></ion-label>
+                            <ion-radio (click)="deliveryMethod()" value="COM"></ion-radio>
                         </ion-item>
                         <ion-item *ngIf="orderProvider.order.restaurant.delivery">
-                            <ion-label>Delivery</ion-label>
+                            <ion-label>Delivery <span style="color:rgb(105, 102, 102)">{{ discountDel | discountFormat }}</span></ion-label>
                             <ion-radio (click)="deliveryMethod()" value="DEL"></ion-radio>
                         </ion-item>
                         <ion-item *ngIf="orderProvider.order.restaurant.self_service">
-                            <ion-label>Take-away</ion-label>
+                            <ion-label>Take-away <span style="color:rgb(105, 102, 102)">{{ discountTw | discountFormat }}</span></ion-label>
                             <ion-radio (click)="deliveryMethod()" value="LOC"></ion-radio>
                         </ion-item>
 
@@ -70,7 +70,7 @@
 
                     <reservation-form 
                         *ngIf="orderProvider.isComerRestaurant()" 
-                        [restaurant]="restaurant" [orderPage]="true" [paymentMethod]="paymentMethod" [orderPage]="true">
+                        [restaurant]="restaurant" [total_final]="total_final" [orderPage]="true" [paymentMethod]="paymentMethod" [orderPage]="true">
                     </reservation-form>
 
                     <div class="borderItems">
@@ -119,13 +119,13 @@
 
                     </div>
 
-                    <ion-label class="products-title borderTotal">Total: ${{getTotal()}}</ion-label>
+                    <ion-label class="products-title borderTotal">Total: ${{total_final}}</ion-label>
                 </ion-card-content>
             </ion-card>
-            <button 
-                ion-button block 
+            <button
+                ion-button block
                 (click)="makeOrder()"
-                [disabled]="!isValid()" 
+                [disabled]="!isValid()"
                 *ngIf="orderProvider.isDeliveryOrder() || orderProvider.isLocalOrder()">
                 Confirmar
             </button>

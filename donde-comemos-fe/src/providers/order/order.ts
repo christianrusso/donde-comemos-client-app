@@ -1,5 +1,3 @@
-import { ITEM_TYPE } from './../../app/constants/item-type';
-import { BaseProvider } from './../base/base';
 import { UserProvider } from './../user/user';
 import { API_URL } from './../../app/config/config';
 import { order } from './../../interfaces/order';
@@ -65,6 +63,7 @@ export class OrderProvider extends AddProductProvider {
     this.order.phone_nbr = ""
     this.order.expected_payment = undefined
     this.order.comments = ""
+    this.order.price_final = 0
   }
 
   map(clientId,mpId) {
@@ -78,6 +77,7 @@ export class OrderProvider extends AddProductProvider {
       comments: this.order.comments || null,
       order_type: this.order.order_type, ...this.mapList(),
       mp_id:mpId,
+      price_final: this.order.price_final
     }
   }
 

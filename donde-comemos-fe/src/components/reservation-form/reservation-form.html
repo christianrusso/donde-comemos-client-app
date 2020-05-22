@@ -1,5 +1,7 @@
 <div [formGroup]="form">
 
+  <ion-input type="text" formControlName="total_final_form" [(ngModel)]="total_final_amount"></ion-input>
+
   <ion-item *ngIf="!orderPage && !onlyReservation && reservationProvider.getProducts().concat(reservationProvider.getMenus()).length > 0">
       <ion-label>Método de pago</ion-label>
       <ion-select placeholder="Seleccione un método" cancelText="Cancelar" okText="Aceptar"

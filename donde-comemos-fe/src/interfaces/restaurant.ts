@@ -17,4 +17,5 @@ export interface restaurant {
     }
     renewal_time: String,
     public_key:string,
+    placediscounts: any[]
 }

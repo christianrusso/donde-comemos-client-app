@@ -41,7 +41,7 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.menuNavigationProvider.loadSidemenu()
-    
+
     this.restaurantProvider.get().then((restaurants: any) => {
       let currentLocation = this.locationProvider.getCurrentLocation()
       if (!currentLocation) {

@@ -81,8 +81,6 @@ export class MercadoPagoProvider {
         } catch (error) {
           console.log(error);
         }
-
-
       } else {
         this.paymentMethodId = response[0].id;
       }
@@ -112,6 +110,7 @@ export class MercadoPagoProvider {
         payment_method: this.paymentMethodId,
         token: this.token,
       }
+
       return this.sendToken(MP_ENDPOINT, data);
     }
   }

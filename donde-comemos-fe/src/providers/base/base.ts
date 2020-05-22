@@ -16,7 +16,7 @@ export class BaseProvider {
   protected _fetch(params){
     const headers = new HttpHeaders()
     this.addHeaders(headers)
-    
+
     return new Promise((resolve , reject) => {
       this.http.get(`${API_URL}${this.getURL(params)}`, new RequestOptions({ headers })).subscribe((response:any) => {
           this.process_get(JSON.parse(response._body))
